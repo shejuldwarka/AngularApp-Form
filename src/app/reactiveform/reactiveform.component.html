@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-left rounded shadow py-5">
+      <form [formGroup]="myReactiveForm" (ngSubmit)="Submit()">
+       
+        <div formGroupName="userDetail">
+          <div class="form-group" style="height: 40px;width: 200px;">
+            <label for="username">UserName</label>
+            <input type="text"  class="form-control" style="height: 40px;width: 200px;margin-top: 10px;" formControlName="username" placeholder="Enter userName"/>
+          </div>
+          <div class="form-group">
+            <label for="email" style="margin-top: 35px;">Email</label>
+            <input type="text" class="form-control" formControlName="email" style="height: 40px;width: 200px;margin-top: 5px;" placeholder="enter Email"/>
+            <small  type="text-danger" *ngIf=" myReactiveForm.get('userDetail.email')?.touched && myReactiveForm.get('userDetail.email')?.errors.email" >Email is required field</small>
+            <small aria-colspan="text-danger" *ngIf=" myReactiveForm.get('userDetail.email')?.touched && myReactiveForm.get('userDetail.email')?.errors.required">please enter valid email</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="course" style="margin-top: 10px;">Select Course</label>
+          <select class="form-control" style="height: 40px;width: 200px;margin-top: 5px;" formControlName="course" id="course">
+            <option value="Angular">Angular</option>
+            <option value="HTML">HTML</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="C++">C++</option>
+            <option value="python">python</option>
+          </select>
+        </div>
+        <button class="btn btn-primary mt-2" >Submit</button>
+    
+      </form>
+    </div>
+
+<div class="row justify-content-center mt-2" *ngIf="isFormSubmitted">
+<div class="col-md-6 rounded shadow py-4">
+ <h2>Reactive Form Data</h2>
+ <p> UserName: <strong>{{ myReactiveForm.get("userDetail.username")?.value}}</strong> </p>
+       
+ <p> Email: <strong>{{ myReactiveForm.get("userDetail.email")?.value }}</strong></p>
+
+ <p>Course: <strong>{{ myReactiveForm.get("course")?.value }}</strong> </p>
+    </div>
+</div>
+  </div>
+</div>

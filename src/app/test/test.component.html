@@ -1,0 +1,35 @@
+<p>test works!</p>
+
+
+<button [disabled]="isActive" (click)="print()">Click me</button>
+
+{{name}}
+
+<p>Server with Id {{serverId
+}} is {{getServerStatus()}}</p>
+
+<div [innerHTML]="val"></div>
+
+<img [src]="imgUrl" alt="no image found">
+
+<!-- <h1>Two way data binding without two way syntax</h1>
+
+<div>
+    <input type="text" [value]="data" (blur)="sendData($evenet)" >
+</div>
+
+<div>
+    {{data}}
+</div> -->
+
+<h1>Two way data binding without two way syntax</h1>
+
+<div>
+    <input type="text" [(ngModel)]="data" >
+</div>
+
+<div>
+    {{data}}
+</div>
+
+
